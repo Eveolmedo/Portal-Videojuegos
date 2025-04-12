@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Videojuegos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#232C33]">
+  <header>
+      <nav class="text-center bg-[#457EAC] text-white lg:p-5 flex justify-between">
+          <h1 class="text-3xl font-bold mb-6 text-gray-800">🎮 Portal Videojuegos 🎮</h1>
+          <button id="openModalBtn" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+            Iniciar sesion
+          </button>
+      </nav>
+      <div>
+          <p class="text-center text-xl text-white p-5">Bienvenido a mi portal de videojuegos, añadi favoritos y deja tu reseña en todos los que jugaste</p>
+      </div>
+  </header>
+
+  <main id="gamesContainer" class="flex flex-wrap justify-center gap-4 rounded p-6">
+  </main>
+
+  <!-- Modal de Login -->
+  <div id="loginModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md relative">
+      
+      <!-- Botón de cerrar -->
+      <button id="closeModalBtn" class="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-xl font-bold">
+        &times;
+      </button>
+  
+      <!-- Formulario de login -->
+      <form id="loginForm">
+        <div class="mb-4">
+          <label for="loginUsername" class="block text-sm font-medium text-gray-700">Usuario</label>
+          <input type="text" id="loginUsername" name="loginUsername" required
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+        </div>
+  
+        <div class="mb-6">
+          <label for="loginPassword" class="block text-sm font-medium text-gray-700">Contraseña</label>
+          <input type="password" id="loginPassword" name="loginPassword" required
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+        </div>
+
+        <div id="message" class="text-center mb-4"></div>
+  
+        <button type="submit"
+          class="w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+          Login
+        </button>
+      </form>
+  
+      <p class="mt-4 text-center text-sm text-gray-600">
+        No tienes cuenta? 
+        <a href="#" id="registerLink" class="text-blue-500 hover:underline">Registrate aqui</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Modal de Registro -->
+  <div id="registerModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50">
+  <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md relative">
+
+    <!-- Botón de cerrar -->
+    <button id="closeRegisterModalBtn" class="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-xl font-bold">
+      &times;
+    </button>
+
+    <!-- Formulario de registro -->
+    <form id="registerForm">
+      <div class="mb-4">
+        <label for="registerUsername" class="block text-sm font-medium text-gray-700">Nuevo Usuario</label>
+        <input type="text" id="registerUsername" name="registerUsername" required
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" />
+      </div>
+
+      <div class="mb-6">
+        <label for="registerPassword" class="block text-sm font-medium text-gray-700">Contraseña</label>
+        <input type="password" id="registerPassword" name="registerPassword" required
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" />
+      </div>
+
+      <div id="messageRegister" class="text-center mb-4"></div>
+
+      <button type="submit"
+        class="w-full py-2 px-4 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-600">
+        Registrarse
+      </button>
+    </form>
+
+    <p class="mt-4 text-center text-sm text-gray-600">
+      ¿Ya tenés cuenta? 
+      <a href="#" id="goToLogin" class="text-blue-500 hover:underline">Iniciar sesion</a>
+    </p>
+  </div>
+  </div>
+
+  <footer>
+
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
