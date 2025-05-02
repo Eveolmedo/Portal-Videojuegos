@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const UserSchema = new mongoose.Schema({
     username: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: "Juego" }]
+    favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: "Game" }]
 })
 
 UserSchema.pre('save', async function (next) {

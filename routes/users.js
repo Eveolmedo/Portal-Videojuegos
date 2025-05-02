@@ -3,7 +3,6 @@ const jwt = require("jsonwebtoken");
 const rateLimit = require('express-rate-limit');
 const User = require('../models/User');
 const Game = require("../models/Game"); // Para los favoritos
-const authMiddleware = require('../middleware/authMiddleware')
 const router = express.Router()
 
 require('dotenv').config()
@@ -57,20 +56,38 @@ router.post("/login", loginLimiter, async (req, res) => {
     }
 })
 
-router.put("/:id/favorite/:gameId", authMiddleware, async (req, res) => {
+router.put("/:id/favorite/:gameId", async (req, res) => {
     try {
-        const game = await Game.findById(req.params.gameId); // Toma el id que viene de la url
-        if (!game) return res.status(404).json({ error: "Juego no encontrado" });
-  
-        const user = await User.findByIdAndUpdate(
-        req.user.userId,
-        { $addToSet: { favorite: game._id } }, // Evita duplicados
-        { new: true }
-        ).populate("favorite"); // Reemplaza automaticamente los IDs por los documentos completos que estan referenciados
-  
-        res.json(user);
+        const user = await User.findById(req.params.id);
+        const gameId = req.params.gameId;
+    
+        if (!user) return res.status(404).json({ error: "Usuario no encontrado" });
+    
+        const isFav = user.favorites.includes(gameId);
+    
+        if (isFav) {
+          user.favorites.pull(gameId); 
+        } else {
+          user.favorites.addToSet(gameId); 
+        }
+    
+        await user.save();
+        res.json({ favorites: user.favorites });
+
     } catch (error) {
         res.status(500).json({ error: error.message });
+    }
+});
+
+router.get("/:id/favorites", async (req, res) => {
+    try {
+      const user = await User.findById(req.params.id).populate("favorites");
+  
+      if (!user) return res.status(404).json({ error: "Usuario no encontrado" });
+  
+      res.json({ favorites: user.favorites });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
     }
 });
 

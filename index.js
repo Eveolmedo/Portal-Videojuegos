@@ -16,7 +16,7 @@ app.use(express.json())
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use("/api/games", gamesRoute)
-app.use("/auth", authRoute)
+app.use("/", authRoute)
 
 app.listen(PORT, () => {
     console.log(`Servidor en http://localhost:${PORT}`)

@@ -10,9 +10,17 @@
   <header>
       <nav class="text-center bg-[#457EAC] text-white lg:p-5 flex justify-between">
           <h1 class="text-3xl font-bold mb-6 text-gray-800">🎮 Portal Videojuegos 🎮</h1>
-          <button id="openModalBtn" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-            Iniciar sesion
-          </button>
+          <div>
+            <button id="openModalBtn" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+              Iniciar sesion
+            </button>
+            <span id="userNameHeader" class="font-semibold"></span>
+            <span id="btnExit" class="font-semibold hidden">exit</span>
+          </div>
+          <div id="favoriteList" class="text-white p-4">
+            <button id="homeBtn" class="text-white px-4 py-2">Inicio</button>
+            <button id="showFavoritesBtn" class="text-white px-4 py-2">Ver Favoritos</button>
+          </div>
       </nav>
       <div>
           <p class="text-center text-xl text-white p-5">Bienvenido a mi portal de videojuegos, añadi favoritos y deja tu reseña en todos los que jugaste</p>
